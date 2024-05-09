@@ -58,6 +58,9 @@
     goToRegisPage() {
       this.$router.push('/regispage');
     },
+    goToHomePage() {
+      this.$router.push('/home');
+    },
   },
     setup() {
       const form = reactive({
@@ -71,7 +74,6 @@
       
   
       async function handleLogin() {
-        try {
           const response = await axios.post(`${apiUrl}/Login/GetData`, {
             
               UserName: form.username,
@@ -83,16 +85,13 @@
             // 登录成功，跳转到Home.vue页面
             // 假设您使用vue-router进行路由管理
             // 这里使用编程式导航进行跳转
-            this.$router.push('/home');
+            console.log('登录成功');
+           goToHomePage();
           
           } else {
             showErrorMessage.value = true;
             errorMessage.value = `登录失败，服务器返回状态码: ${response.status}`;
           }
-        } catch (error) {
-          showErrorMessage.value = true;
-          errorMessage.value = '登录失败，网络错误';
-        }
       }
   
       return {

@@ -51,6 +51,8 @@ namespace WeApi.Controllers.Login
             sys_User.Name = data.UserName;//账号
             sys_User.PassWord = data.PassWord;//密码
 
+            SugarHelp.Insert(sys_User);
+
             return Json(new { code = "0", data = "创建成功", messge = "" });
         }
         #endregion

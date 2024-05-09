@@ -34,7 +34,7 @@ try {
 
      //调用前置地址    
       //app.provide('apiBaseUrl', 'http://121.40.185.118:44311') //服务器地址     
-     app.provide('apiBaseUrl', 'http://192.168.1.126:5000')//本地地址
+     app.provide('apiBaseUrl', 'https://localhost:44311')//本地地址
      //挂载路由
      app.use(router);
 
