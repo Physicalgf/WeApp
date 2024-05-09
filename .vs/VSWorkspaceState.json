@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Backed",
-    "\\Backed\\WeApi"
+    ""
   ],
-  "SelectedNode": "\\Backed\\WeApi\\WeApi.sln",
+  "SelectedNode": "\\WeApi.sln",
   "PreviewInSolutionExplorer": false
 }

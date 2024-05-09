@@ -31,7 +31,7 @@ namespace WeApi
                 options.AddPolicy("AllowSpecificOrigin", builder =>
                 {
                     builder
-                         .WithOrigins("http://localhost:8081")//本地地址
+                         .WithOrigins("http://localhost:8080")//本地地址
                         //.WithOrigins("http://121.40.185.118:8068") // 允许的前端源地址，可以使用*表示允许任何源，但不推荐生产环境使用
                         .AllowAnyMethod() // 允许任何HTTP方法（GET、POST等）
                         .AllowAnyHeader() // 允许任何请求头

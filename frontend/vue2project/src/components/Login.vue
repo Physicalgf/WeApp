@@ -7,13 +7,16 @@
     <h3 style="display: inline-block;">密码 ：</h3><el-input placeholder="请输入密码" v-model="formData.password" show-password></el-input>
   </el-main>
   <el-footer>
-    <el-button type="primary" @click="SubmitLogin"  style="font-size: 13px;">登录</el-button>
+    <router-link to="/register" style="font-size: 18px;margin-left: 25px;">注册</router-link>
+    <el-button type="primary"  @click="SubmitLogin" style="font-size: 13px;margin-left: 40px;">登录</el-button>
+    <router-link to="/forget" style="margin-left: 40px;font-size: 18px;">忘记密码</router-link>
   </el-footer>
 </el-container>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import Router from '../router'
 
 export default {
   data () {
@@ -27,12 +30,11 @@ export default {
   methods: {
     SubmitLogin () {
       console.log('登录', this.formData)
-      // 在这里添加实际的登录逻辑，如调用API
-      const response = axios.post('/api/login', this.formData);
-      if (response.data.success) {
-          // 登录成功，可以在这里处理登录成功后的逻辑，如设置用户信息、跳转到主页面等
-          this.$router.push('/dashboard');
+      axios.post('https://localhost:44311/Login/GetData', this.formData).then(res => {
+        if (res.data.code === 200) {
+          Router.push('/home')
         }
+      })
     }
   }
 }
