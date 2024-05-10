@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Desktop\\网站We\\WeApi\\WeApi\\WeApi.csproj": {}
+    "E:\\Desktop\\WeAppProject\\Backed\\WeApi\\WeApi\\WeApi.csproj": {}
   },
   "projects": {
-    "E:\\Desktop\\网站We\\WeApi\\WeApi\\WeApi.csproj": {
+    "E:\\Desktop\\WeAppProject\\Backed\\WeApi\\WeApi\\WeApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Desktop\\网站We\\WeApi\\WeApi\\WeApi.csproj",
+        "projectUniqueName": "E:\\Desktop\\WeAppProject\\Backed\\WeApi\\WeApi\\WeApi.csproj",
         "projectName": "WeApi",
-        "projectPath": "E:\\Desktop\\网站We\\WeApi\\WeApi\\WeApi.csproj",
+        "projectPath": "E:\\Desktop\\WeAppProject\\Backed\\WeApi\\WeApi\\WeApi.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\Desktop\\网站We\\WeApi\\WeApi\\obj\\publish\\win-x64\\",
+        "outputPath": "E:\\Desktop\\WeAppProject\\Backed\\WeApi\\WeApi\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

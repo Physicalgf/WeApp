@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mJ0FK/Xl5kj+qX4JSzGRTDJYG9H0lQRV0Nq8kW5/WHcas5I/qkbuxKywmLpCRTOjtW9P3roMa/FGvz6lLReOMw==",
+  "dgSpecHash": "YQ+B7RDinjJW0k8XTjES6Hj4ICEWGm8WwkgUd5qwokHKjxcrK8la+O0/UH94rWL3hgIoPtUohGaqiJ2xnOC0LQ==",
   "success": true,
-  "projectFilePath": "E:\\Desktop\\网站We\\WeApi\\WeApi\\WeApi.csproj",
+  "projectFilePath": "E:\\Desktop\\WeAppProject\\Backed\\WeApi\\WeApi\\WeApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.7\\microsoft.data.sqlclient.2.1.7.nupkg.sha512",

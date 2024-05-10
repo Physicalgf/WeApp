@@ -2,9 +2,9 @@
     <el-container>
         <el-header><H2>注册</H2></el-header>
         <el-main>
-            <h3 style="display: inline-block;">账号 ：</h3> <el-input v-model="FormData.username" placeholder="请输入账号"></el-input>
+            <h3 style="display: inline-block;">账号 ：</h3> <el-input v-model="FormData.username" style="width: 300px;" placeholder="请输入账号"></el-input>
             <br>
-            <h3 style="display: inline-block;">密码 ：</h3><el-input v-model="FormData.password" placeholder="请输入密码" type="password"></el-input>
+            <h3 style="display: inline-block;">密码 ：</h3><el-input v-model="FormData.password" style="width: 300px;" placeholder="请输入密码" type="password"></el-input>
         </el-main>
         <el-footer>
             <el-button type="primary" @click="register">注册</el-button>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Router from '../router'
 
 export default {
@@ -28,7 +27,11 @@ export default {
   },
   methods: {
     register () {
-      axios.post('https://localhost:44311/Login/CreateAcc', this.FormData)
+      if (!this.FormData.username || !this.FormData.password) {
+        this.$message.error('账号或密码不能为空！')
+        return
+      }
+      this.$http.post('/Login/CreateAcc', this.FormData)
         .then(response => {
           console.log(response.data.code)
           if (response.data.code === '200') {

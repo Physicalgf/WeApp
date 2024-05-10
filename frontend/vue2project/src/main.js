@@ -7,13 +7,15 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 
-Vue.prototype.$axios = axios
+const instance = axios.create({
+  baseURL: 'https://localhost:44311'
+})
 
+Vue.prototype.$http = instance
 Vue.use(ElementUI)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  axios,
   router,
   components: { App },
   template: '<App/>'

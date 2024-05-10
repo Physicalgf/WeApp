@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Router from '../router'
 
 export default {
@@ -34,7 +33,11 @@ export default {
   },
   methods: {
     SubmitLogin () {
-      axios.post('https://localhost:44311/Login/GetData', this.formData).then(res => {
+      if (!this.formData.username || !this.formData.password) {
+        this.$message.error('账号或密码不能为空！')
+        return
+      }
+      this.$http.post('/Login/GetData', this.formData).then(res => {
         if (res.data.code === '200') {
           this.$message.success(res.data.messge)
           Router.push('/home')

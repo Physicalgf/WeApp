@@ -46,14 +46,23 @@ namespace WeApi.Controllers.Login
         [ActionName("CreateAcc")]
         public ActionResult CreateAcc([FromBody] LoginData data)
         {
-            Sys_User sys_User = new Sys_User();
-            sys_User.Id = Guid.NewGuid().ToString();
-            sys_User.Name = data.UserName;//账号
-            sys_User.PassWord = data.PassWord;//密码
+            //判断用户名是否存在
+            var sysuserentity = SugarHelp.GetEntity<Sys_User>(t => t.Name == data.UserName);
+            if (sysuserentity==null)
+            {
+                Sys_User sys_User = new Sys_User();
+                sys_User.Id = Guid.NewGuid().ToString();
+                sys_User.Name = data.UserName;//账号
+                sys_User.PassWord = data.PassWord;//密码
 
-            SugarHelp.Insert(sys_User);
+                SugarHelp.Insert(sys_User);
 
-            return Json(new { code = "200", data = "", messge = "创建成功，请登录" });
+                return Json(new { code = "200", data = "", messge = "创建成功，请登录" });
+            }
+            else
+            {
+                return Json(new { code = "0", data = "", messge = "创建失败，账号已存在" });
+            }
         }
         #endregion
 

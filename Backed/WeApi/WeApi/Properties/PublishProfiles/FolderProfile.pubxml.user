@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>E:\Desktop\网站We\WeApi\WeApi\bin\Release\net5.0\publish\</_PublishTargetUrl>
-    <History>True|2024-05-08T08:50:36.5458749Z;True|2024-05-08T15:32:12.8931924+08:00;True|2024-05-08T13:52:35.2575561+08:00;True|2024-05-08T13:42:04.1842945+08:00;True|2024-05-08T13:34:12.5806475+08:00;</History>
+    <_PublishTargetUrl>E:\Desktop\WeAppProject\Backed\WeApi\WeApi\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2024-05-10T03:15:11.6573430Z;True|2024-05-08T16:50:36.5458749+08:00;True|2024-05-08T15:32:12.8931924+08:00;True|2024-05-08T13:52:35.2575561+08:00;True|2024-05-08T13:42:04.1842945+08:00;True|2024-05-08T13:34:12.5806475+08:00;</History>
   </PropertyGroup>
 </Project>

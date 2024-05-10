@@ -17,10 +17,13 @@ module.exports = {
   ],
   // required to lint *.vue files
   plugins: [
-    'vue'
+    
   ],
   // add your custom rules here
   rules: {
+    '*': 'off',
+    'vue/no-unused-vars': 'off',
+    'vue/no-multiple-template-root': 'off',
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
