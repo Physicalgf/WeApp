@@ -6,13 +6,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://localhost:44311'
+  baseURL: 'https://localhost:44311'//后端接口地址
 })
 
 Vue.prototype.$http = instance
 Vue.use(ElementUI)
 Vue.config.productionTip = false
-
 
 new Vue({
   router,

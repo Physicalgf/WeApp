@@ -51,6 +51,9 @@ export default {
 </script>
 
 <style>
+.template{
+  height:1000px;
+}
 .el-header{
     margin-top: 100px;
 }

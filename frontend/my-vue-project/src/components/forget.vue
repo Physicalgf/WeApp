@@ -1,8 +1,5 @@
 <template>
     <el-container>
-        <div>
-         <canvas ref="canvas" @click="createFirework" />
-        </div>
         <el-header><H2>忘记密码</H2></el-header>
         <el-main>
             <h4 style="display: inline-block;margin-right: 20px;">请输入账号:</h4><el-input v-model="FormData.username" placeholder="请输入用户名"></el-input>
@@ -45,7 +42,7 @@ export default {
 
 <style scoped>
 .el-header{
-  margin-top: 200px;
+  margin-top: 100px;
 }
 .el-input{
     width: 300px;

@@ -1,9 +1,7 @@
 <template>
-  <div id="app" class="fireworks" @click="createFirework($event)" ref="fireworksContainer">
+  <div class="fireworks" @click="createFirework($event)" ref="fireworksContainer">
     <div class="firework" v-for="(firework, index) in fireworks" :key="index" :style="{ top: firework.y + 'px', left: firework.x + 'px', background: firework.color, opacity: firework.opacity }"></div>
-    <router-view/>
   </div>
-
 </template>
 
 <script>
@@ -56,41 +54,11 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* 设置body和html的高度为100% */
-  width: 100%;
-  overflow: hidden; /* 防止滚动条出现 */
-  display: flex; /* 使用flex布局 */
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style scoped>
 .fireworks {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
