@@ -1,4 +1,7 @@
 <template>
+<div style="display: flex;">
+<div class="bimages"><el-image :src="require('@/image/image1.jpg')"></el-image></div>
+<div class="logins">
 <el-container>
   <el-header><i class="el-icon-user"> &nbsp;登录</i></el-header>
   <el-main>
@@ -12,6 +15,8 @@
     <router-link to="/forget" style="margin-left: 40px;font-size: 18px;">忘记密码</router-link>
   </el-footer>
 </el-container>
+</div>
+</div>
 </template>
 
 <script>
@@ -29,10 +34,12 @@ export default {
   },
   methods: {
     SubmitLogin () {
-      console.log('登录', this.formData)
       axios.post('https://localhost:44311/Login/GetData', this.formData).then(res => {
-        if (res.data.code === 200) {
+        if (res.data.code === '200') {
+          this.$message.success(res.data.messge)
           Router.push('/home')
+        } else {
+          this.$message.error(res.data.messge)
         }
       })
     }
@@ -42,7 +49,7 @@ export default {
 
 <style scoped>
 .el-header {
- margin-top: 100px;
+ margin-top: 200px;
 }
 .el-icon-user {
   font-size: 40px; /* 根据需要调整图标大小 */
@@ -53,4 +60,16 @@ export default {
 .a{
   font-size: 100px;
 }
+.bimages{
+   width: 70%;
+   height: 950px;
+   display: inline-block;
+}
+.logins{
+  width: 500px;
+  height: 850px;
+  display: inline-block;
+  margin-left: 50px;
+}
+
 </style>

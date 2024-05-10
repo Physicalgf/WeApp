@@ -34,10 +34,10 @@ namespace WeApi.Controllers.Login
             var count = SugarHelp.GetList<Sys_User>(t => t.Name == data.UserName && t.PassWord == data.PassWord);
             if (count.Count == 0)
             {
-                return Json(new { code = "1", data = "登录失败，请检查账号密码", messge = "" });
+                return Json(new { code = "0", data = "", messge = "登录失败，请检查账号密码" });
             }
 
-            return Json(new { code = "0", data = "登录成功", messge = "" });
+            return Json(new { code = "200", data = "", messge = "登录成功" });
         }
         #endregion
 
@@ -53,7 +53,7 @@ namespace WeApi.Controllers.Login
 
             SugarHelp.Insert(sys_User);
 
-            return Json(new { code = "0", data = "创建成功", messge = "" });
+            return Json(new { code = "200", data = "", messge = "创建成功，请登录" });
         }
         #endregion
 
@@ -70,7 +70,7 @@ namespace WeApi.Controllers.Login
 
             SugarHelp.Update<Sys_User>(t => new Sys_User() { PassWord = data.OldPassWord }, t => t.Id == counts.Id);
 
-            return Json(new { code = "0", data = "修改密码成功", messge = "" });
+            return Json(new { code = "200", data = "", messge = "修改密码成功" });
         }
         #endregion
 
@@ -82,10 +82,10 @@ namespace WeApi.Controllers.Login
             var counts = SugarHelp.GetEntity<Sys_User>(t => t.Name == data.UserName);
             if (counts == null)
             {
-                return Json(new { code = "1", data = "该账号不存在", messge = "" });
+                return Json(new { code = "1", data = "", messge = "该账号不存在" });
             }
 
-            return Json(new { code = "0", data = counts.PassWord, messge = "" });
+            return Json(new { code = "200", data ="密码是: "+ counts.PassWord, messge = "" });
         }
         #endregion
         #endregion

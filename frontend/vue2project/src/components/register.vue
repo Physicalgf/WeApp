@@ -30,9 +30,15 @@ export default {
     register () {
       axios.post('https://localhost:44311/Login/CreateAcc', this.FormData)
         .then(response => {
-          if (response.data.code === 200) {
-            console.log('注册成功')
-            Router.push('/')
+          console.log(response.data.code)
+          if (response.data.code === '200') {
+            this.$message({
+              message: response.data.messge,
+              type: 'success'
+            })
+            Router.push('/login')
+          } else {
+            this.$message.error(response.data.messge)
           }
         })
     }
