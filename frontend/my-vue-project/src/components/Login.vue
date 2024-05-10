@@ -69,13 +69,15 @@ export default {
    width: 70%;
    height: 950px;
    display: inline-block;
-   margin-top:30px
+   margin-top:30px;
+   margin-left: 50px;
 }
 .logins{
   width: 500px;
   height: 850px;
   display: inline-block;
   margin-left: 50px;
+  margin-top: 100px;
 }
 
 </style>

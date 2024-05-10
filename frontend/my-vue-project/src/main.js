@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 
 const instance = axios.create({
+  //baseURL: 'http://121.40.185.118:44311'//后端接口地址
   baseURL: 'https://localhost:44311'//后端接口地址
 })
 
