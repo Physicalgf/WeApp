@@ -18,20 +18,20 @@ export default {
       const x = event.clientX;
       const y = event.clientY;
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 10; i++) {
         const firework = {
           x,
           y,
           color: `hsl(${Math.random() * 360}, 100%, 50%)`,
-          speedX: (Math.random() - 0.5) * 8,
-          speedY: (Math.random() - 0.5) * 8,
+          speedX: (Math.random() - 0.5) * 2,
+          speedY: (Math.random() - 0.5) * 2,
           opacity: 1,
           fade: 0.03
         };
         this.fireworks.push(firework);
         setTimeout(() => {
           this.fireworks.splice(this.fireworks.indexOf(firework), 1);
-        }, 1200);
+        }, 7000);
       }
 
       this.animateFireworks();
