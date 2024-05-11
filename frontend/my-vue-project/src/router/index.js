@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Register from '@/components/register'
 import Forget from '@/components/forget'
+import MusicsHome from '@/components/Musics/MusicHome'
 
 Vue.use(VueRouter)
 
@@ -32,7 +33,16 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  
+  //音乐
+  {
+    path: '/MusicsHome',
+    name: 'MusicsHome',
+    component: MusicsHome
   }
+
+  
 ]
 
 const router = new VueRouter({

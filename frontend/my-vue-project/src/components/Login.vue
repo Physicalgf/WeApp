@@ -41,7 +41,7 @@ export default {
       this.$http.post('/Login/GetData', this.formData).then(res => {
         if (res.data.code === '200') {
           this.$message.success(res.data.messge)
-          Router.push('/home')
+          Router.push('/MusicsHome')
         } else {
           this.$message.error(res.data.messge)
         }
