@@ -152,7 +152,7 @@ export default {
                 type: 'warning'
             }).then(() => {
                 // 在这里添加删除请求的逻辑
-               this.$http.post('/Musics/DeleteMusic',{Id:row.id}).then(res => {
+               this.$http.get(`/Musics/DeleteMusic?Id=${row.id}`).then(res => {
                    if (res.data.code === '200') {
                        this.$message.success('删除成功')
                        this.MusicSearch()

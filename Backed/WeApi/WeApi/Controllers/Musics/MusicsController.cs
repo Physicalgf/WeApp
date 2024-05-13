@@ -82,7 +82,7 @@ namespace WeApi.Controllers.Musics
         #endregion
 
         #region 删除音乐
-        [HttpPost]
+        [HttpGet]
         [ActionName("DeleteMusic")]
         public ActionResult DeleteMusic(string Id)
         {
