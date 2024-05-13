@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Desktop\\Weapp\\Backed\\WeApi\\WeApi\\WeApi.csproj": {}
+    "C:\\Users\\27047\\Desktop\\WeApp\\Backed\\WeApi\\WeApi\\WeApi.csproj": {}
   },
   "projects": {
-    "E:\\Desktop\\Weapp\\Backed\\WeApi\\WeApi\\WeApi.csproj": {
+    "C:\\Users\\27047\\Desktop\\WeApp\\Backed\\WeApi\\WeApi\\WeApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Desktop\\Weapp\\Backed\\WeApi\\WeApi\\WeApi.csproj",
+        "projectUniqueName": "C:\\Users\\27047\\Desktop\\WeApp\\Backed\\WeApi\\WeApi\\WeApi.csproj",
         "projectName": "WeApi",
-        "projectPath": "E:\\Desktop\\Weapp\\Backed\\WeApi\\WeApi\\WeApi.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\Desktop\\Weapp\\Backed\\WeApi\\WeApi\\obj\\",
+        "projectPath": "C:\\Users\\27047\\Desktop\\WeApp\\Backed\\WeApi\\WeApi\\WeApi.csproj",
+        "packagesPath": "C:\\Users\\27047\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\27047\\Desktop\\WeApp\\Backed\\WeApi\\WeApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\27047\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,9 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://packagesource": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -52,7 +46,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -61,8 +55,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -74,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     }

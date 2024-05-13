@@ -98,5 +98,24 @@ namespace WeApi.Controllers.Login
         }
         #endregion
         #endregion
+
+        #region 后台管理
+        #region 登录效验
+        [HttpGet]
+        [ActionName("GetUserList")]
+        public ActionResult GetUserList(string KeyWord)
+        {
+            var list = SugarHelp.Db.Queryable<Sys_User>()
+                .WhereIF(!string.IsNullOrEmpty(KeyWord),t=>t.Name.Contains(KeyWord))
+                .Select(t=> new { 
+                   t.Id,
+                   User_Name = t.Name,
+                   Create_Time=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                }).ToList();
+
+            return Json(new { code = "200", data = list, messge = "" });
+        }
+        #endregion
+        #endregion
     }
 }

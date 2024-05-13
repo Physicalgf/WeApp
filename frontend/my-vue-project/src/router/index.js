@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import Register from '@/components/register'
 import Forget from '@/components/forget'
 import MusicsHome from '@/components/Musics/MusicHome'
+import ManageHome from '@/components/Manage/ManageHome'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,14 @@ const routes = [
     name: 'Register',
     component: Register
   },
+
+  //后台管理
+  {
+    path: '/ManageHome',
+    name: 'ManageHome',
+    component: ManageHome
+  },
+
   
   //音乐
   {

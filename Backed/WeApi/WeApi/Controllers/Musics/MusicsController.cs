@@ -27,11 +27,13 @@ namespace WeApi.Controllers.Musics
         #region 后台
         #region 音乐
         #region 音乐列表
-        [HttpPost]
+        [HttpGet]
         [ActionName("GetMusicList")]
-        public ActionResult GetMusicList()
+        public ActionResult GetMusicList(string KeyWord)
         {
-            var list=SugarHelp.GetList<Sys_Musics>(null);
+            var list=SugarHelp.Db.Queryable<Sys_Musics>()
+                .WhereIF(!string.IsNullOrEmpty(KeyWord),t=>t.Music_Name.Contains(KeyWord)||t.Music_Person.Contains(KeyWord))
+                .ToList();
 
             return Json(new { code = "200", data = list, messge = "" });
         }
@@ -129,7 +131,7 @@ namespace WeApi.Controllers.Musics
 
         #region 修改音乐专辑
         [HttpPost]
-        [ActionName("EditeMusic")]
+        [ActionName("EditeMusicAlbum")]
         public ActionResult EditeMusicAlbum([FromBody] Sys_MusicsAlbum data)
         {
             SugarHelp.Update<Sys_MusicsAlbum>(t => new Sys_MusicsAlbum()
@@ -147,7 +149,7 @@ namespace WeApi.Controllers.Musics
 
         #region 删除音乐专辑
         [HttpPost]
-        [ActionName("DeleteMusic")]
+        [ActionName("DeleteMusicAlbum")]
         public ActionResult DeleteMusicAlbum(string Id)
         {
             SugarHelp.Delete<Sys_MusicsAlbum>(t => t.Id == Id);

@@ -26,28 +26,38 @@ namespace WeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
+            try
             {
-                options.AddPolicy("AllowSpecificOrigin", builder =>
+                services.AddCors(options =>
                 {
-                    builder
-                         .WithOrigins("http://localhost:8080")//本地地址
-                        //.WithOrigins("http://121.40.185.118:8068") // 允许的前端源地址，可以使用*表示允许任何源，但不推荐生产环境使用
-                        .AllowAnyMethod() // 允许任何HTTP方法（GET、POST等）
-                        .AllowAnyHeader() // 允许任何请求头
-                        .AllowCredentials(); // 如果需要携带Cookie等凭证，需要开启此选项
+                    options.AddPolicy("AllowSpecificOrigin", builder =>
+                    {
+                        builder
+                             .WithOrigins("http://localhost:8080")//本地地址
+                                                                  //.WithOrigins("http://121.40.185.118:8068") // 允许的前端源地址，可以使用*表示允许任何源，但不推荐生产环境使用
+                            .AllowAnyMethod() // 允许任何HTTP方法（GET、POST等）
+                            .AllowAnyHeader() // 允许任何请求头
+                            .AllowCredentials(); // 如果需要携带Cookie等凭证，需要开启此选项
+                    });
                 });
-            });
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+                services.AddControllers();
+                services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeApi", Version = "v1" });
+                });
+            }
+            catch (Exception ex)
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeApi", Version = "v1" });
-            });
+
+                throw ex;
+            }
+       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             //if (env.IsDevelopment())
             //{
                 app.UseDeveloperExceptionPage();
