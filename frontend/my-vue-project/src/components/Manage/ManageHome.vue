@@ -17,6 +17,11 @@
                   <i class="el-icon-service"></i>
                   <span slot="title">音乐管理</span>
                 </el-menu-item>
+
+                <el-menu-item index="3" @click="handleItemClick('3')">
+                  <i class="el-icon-notebook-2"></i>
+                  <span slot="title">专辑管理</span>
+                </el-menu-item>
               </el-menu>
             </el-col>
           </div>
@@ -26,6 +31,8 @@
           <people-management v-if="activeItem === '1'" />
           <!-- 音乐管理组件 -->
           <music-management v-if="activeItem === '2'" />
+          <!-- 专辑管理组件 -->
+          <album-management v-if="activeItem === '3'" />
         </div>
       </div>
     </el-container>
@@ -35,11 +42,13 @@
 <script>
 import PeopleManagement from '@/components/Manage/ManageUser.vue';
 import MusicManagement from '@/components/Manage/ManageMusics.vue';
+import AlbumManagement from '@/components/Manage/ManageAlbum.vue';
 
 export default {
   components: {
     PeopleManagement,
     MusicManagement,
+    AlbumManagement
   },
   data() {
     return {

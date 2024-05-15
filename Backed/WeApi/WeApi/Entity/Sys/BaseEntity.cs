@@ -16,9 +16,9 @@ namespace WeApi.Entity.Sys
         ///// 是否删除
         ///// </summary>
         //public bool Is_Deleted { get; set; }
-        ///// <summary>
-        ///// 创建时间
-        ///// </summary>
-        //public DateTime Create_Time { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime? Create_Time { get; set; }
     }
 }

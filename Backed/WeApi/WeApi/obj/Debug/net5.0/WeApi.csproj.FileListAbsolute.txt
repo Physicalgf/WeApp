@@ -96,3 +96,4 @@ C:\Users\27047\Desktop\WeApp\Backed\WeApi\WeApi\obj\Debug\net5.0\WeApi.dll
 C:\Users\27047\Desktop\WeApp\Backed\WeApi\WeApi\obj\Debug\net5.0\ref\WeApi.dll
 C:\Users\27047\Desktop\WeApp\Backed\WeApi\WeApi\obj\Debug\net5.0\WeApi.pdb
 C:\Users\27047\Desktop\WeApp\Backed\WeApi\WeApi\obj\Debug\net5.0\WeApi.genruntimeconfig.cache
+C:\Users\27047\Desktop\WeApp\Backed\WeApi\WeApi\obj\Debug\net5.0\WeApi.csproj.AssemblyReference.cache

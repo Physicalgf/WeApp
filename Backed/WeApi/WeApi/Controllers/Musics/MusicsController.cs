@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using WeApi.Controllers.Login;
 using WeApi.Entity.Login;
 using WeApi.Entity.Musics;
 using WeApi.Help;
+using WeApi.Model;
 using WeApi.Model.Login;
 
 namespace WeApi.Controllers.Musics
@@ -56,6 +59,7 @@ namespace WeApi.Controllers.Musics
         public ActionResult AddMusic([FromBody] Sys_Musics data)
         {
             data.Id = Guid.NewGuid().ToString();
+            data.Create_Time=DateTime.Now;
 
             SugarHelp.Insert<Sys_Musics>(data);
 
@@ -95,34 +99,86 @@ namespace WeApi.Controllers.Musics
 
         #region 音乐专辑
         #region 音乐专辑列表
-        [HttpPost]
+        [HttpGet]
         [ActionName("GetMusicAlbumList")]
-        public ActionResult GetMusicAlbumList()
+        public ActionResult GetMusicAlbumList(string KeyWord)
         {
-            var list = SugarHelp.GetList<Sys_MusicsAlbum>(null);
+            var list = SugarHelp.Db.Queryable<Sys_MusicsAlbum>()
+                .WhereIF(!string.IsNullOrEmpty(KeyWord),t=>t.Album_Name.Contains(KeyWord))
+                .Select(t=>new AddMusocsAlbum()
+                { 
+                    Album_Name=t.Album_Name,
+                    Album_Info=t.Album_Info,
+                    Album_Url=t.Album_Url,
+                    Create_Time=t.Create_Time,
+                    Id=t.Id,
+                    Musics_Id=t.Musics_Id
+                }).ToList();
+
+            list.ForEach(t=>{
+                if (!string.IsNullOrEmpty(t.Musics_Id))
+                {
+                    List<string> sonlist = new List<string>();
+                    if (t.Musics_Id.Contains(","))
+                    {
+                        sonlist.AddRange(t.Musics_Id.Split(",").ToList());
+                    }
+                    else
+                    {
+                        sonlist.Add(t.Musics_Id);
+                    }
+                    t.SonsList = sonlist;
+                }
+            });
 
             return Json(new { code = "200", data = list, messge = "" });
         }
         #endregion
 
         #region 音乐专辑详情
-        [HttpPost]
+        [HttpGet]
         [ActionName("GetMusicAlbum")]
         public ActionResult GetMusicAlbum(string Id)
         {
             var entity = SugarHelp.GetEntity<Sys_MusicsAlbum>(t => t.Id == Id);
 
-            return Json(new { code = "200", data = entity, messge = "" });
+            AddMusocsAlbum addMusocsAlbum = new AddMusocsAlbum();
+            addMusocsAlbum.Album_Name = entity.Album_Name;
+            addMusocsAlbum.Album_Info = entity.Album_Info;
+            addMusocsAlbum.Album_Url = entity.Album_Url;
+            addMusocsAlbum.Create_Time = entity.Create_Time;
+            addMusocsAlbum.Id = entity.Id;
+            addMusocsAlbum.Musics_Id = entity.Musics_Id;
+
+            var musics = SugarHelp.GetList<Sys_Musics>(t=> addMusocsAlbum.Musics_Id.Contains(t.Id))
+                .Select(t=>new MusicList() 
+                { 
+                    Id=t.Id,
+                    music_Name=t.Music_Name
+                
+                }).ToList();
+
+            addMusocsAlbum.SonsInfoList= musics;
+
+            return Json(new { code = "200", data = addMusocsAlbum, messge = "" });
         }
         #endregion
 
         #region 添加音乐专辑
         [HttpPost]
         [ActionName("AddMusicAlbum")]
-        public ActionResult AddMusicAlbum([FromBody] Sys_MusicsAlbum data)
+        public ActionResult AddMusicAlbum([FromBody] AddMusocsAlbum data)
         {
             data.Id = Guid.NewGuid().ToString();
-
+            data.Create_Time = DateTime.Now;
+            if (data.SonsList!=null)
+            {
+                if (data.SonsList.Count>0)
+                {
+                    data.Musics_Id = string.Join(",", data.SonsList);
+                }
+            }
+            
             SugarHelp.Insert<Sys_MusicsAlbum>(data);
 
             return Json(new { code = "200", data = "", messge = "新增成功" });
@@ -148,7 +204,7 @@ namespace WeApi.Controllers.Musics
         #endregion
 
         #region 删除音乐专辑
-        [HttpPost]
+        [HttpGet]
         [ActionName("DeleteMusicAlbum")]
         public ActionResult DeleteMusicAlbum(string Id)
         {
