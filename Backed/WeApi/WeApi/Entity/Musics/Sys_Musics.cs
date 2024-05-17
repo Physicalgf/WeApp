@@ -16,7 +16,7 @@ namespace WeApi.Entity.Musics
         /// </summary>
         public string Music_Person { get; set; }
         /// <summary>
-        /// 音乐信息
+        /// 音乐url信息
         /// </summary>
         public string Music_Info { get; set; }
         /// <summary>
@@ -27,5 +27,9 @@ namespace WeApi.Entity.Musics
         /// 歌词
         /// </summary>
         public string Music_Lyric { get; set; }
+        /// <summary>
+        /// 歌曲封面
+        /// </summary>
+        public string Music_Url { get; set; }
     }
 }

@@ -6,6 +6,8 @@ import Register from '@/components/register'
 import Forget from '@/components/forget'
 import MusicsHome from '@/components/Musics/MusicHome'
 import ManageHome from '@/components/Manage/ManageHome'
+import MusicPlayer from '@/components/Musics/MusicPlayer'
+import MusicGc from '@/components/Musics/MusicGc'
 
 Vue.use(VueRouter)
 
@@ -44,13 +46,25 @@ const routes = [
   },
 
   
-  //音乐
+  //音乐首页
   {
     path: '/MusicsHome',
     name: 'MusicsHome',
     component: MusicsHome
+  },
+  //音乐播放器
+  {
+    path: '/MusicPlayer',
+    name: 'MusicPlayer',
+    component: MusicPlayer
+  },
+  //音乐歌词 MusicGc
+  {
+    path: '/MusicGc',
+    name: 'MusicGc',
+    component: MusicGc
   }
-
+  
   
 ]
 

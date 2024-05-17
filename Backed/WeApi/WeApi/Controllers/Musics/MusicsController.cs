@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using WeApi.Controllers.Login;
 using WeApi.Entity.Login;
@@ -20,6 +22,7 @@ namespace WeApi.Controllers.Musics
     public class MusicsController : Controller
     {
         private readonly ILogger<LoginController> _logger;
+        private readonly string _uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
 
         public MusicsController(ILogger<LoginController> logger)
         {
@@ -60,7 +63,8 @@ namespace WeApi.Controllers.Musics
         {
             data.Id = Guid.NewGuid().ToString();
             data.Create_Time=DateTime.Now;
-
+            data.Music_Info = "/musics/" + data.Music_Name;//音乐mp3地址
+            data.Music_Url= "/musics/" + data.Music_Person + "img.jepg";//歌手背景图片
             SugarHelp.Insert<Sys_Musics>(data);
 
             return Json(new { code = "200", data = "", messge = "新增成功" });
@@ -76,9 +80,7 @@ namespace WeApi.Controllers.Musics
                 Music_Name=data.Music_Name,
                 Music_Person=data.Music_Person,
                 Music_Info=data.Music_Info,
-                Music_Lyric=data.Music_Lyric,
-                Music_Time=data.Music_Time
-            
+                Music_Lyric=data.Music_Lyric
             },t=>t.Id==data.Id);
 
             return Json(new { code = "200", data = "", messge = "修改成功" });
@@ -93,6 +95,51 @@ namespace WeApi.Controllers.Musics
             SugarHelp.Delete<Sys_Musics>(t => t.Id == Id);
 
             return Json(new { code = "200", data = "", messge = "删除成功" });
+        }
+        #endregion
+
+        #region 上传m封面图片
+        [HttpPost]
+        [ActionName("UploadPictures")]
+        public ActionResult UploadPictures(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("No file uploaded");
+            }
+
+            var filePath = Path.Combine("C:\\Users\\Administrator\\Desktop\\dist\\musics", file.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyToAsync(stream);
+            }
+
+            return Json(new { code = "200", data = "", messge = "上传成功" });
+        }
+        #endregion
+
+        #region 上传mp3文件
+        [HttpPost]
+        [ActionName("UploadMusic")]
+        public ActionResult UploadMusic(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("No file uploaded");
+            }
+
+            if (file.ContentType != "audio/mpeg")
+            {
+                return BadRequest("Uploaded file is not an MP3");
+            }
+
+            var filePath = Path.Combine("C:\\Users\\Administrator\\Desktop\\dist\\musics", file.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                 file.CopyToAsync(stream);
+            }
+
+            return Json(new { code = "200", data = "", messge = "上传成功" });
         }
         #endregion
         #endregion

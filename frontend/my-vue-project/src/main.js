@@ -6,11 +6,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 
 const instance = axios.create({
-  //baseURL: 'http://121.40.185.118:44311'//后端接口地址
+ 
+    // baseURL: 'http://121.40.185.118:44311'//后端接口地址
   baseURL: 'https://localhost:44311'//后端接口地址
 })
 
+const uploadUrl='http://121.40.185.118:8068'
+
 Vue.prototype.$http = instance
+Vue.prototype.$uploadUrl=uploadUrl
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
